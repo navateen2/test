@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/components/form.css ">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="/src/assets/kv logo.png" alt="">
+    </nav>
+    <div class="main-page">
+        <div class="sidebar">
+            <div class="sidebutton">
+                <img src="/src/assets/circle_icon.png" alt="">
+                Employee List
+            </div>
+        </div>
+        <div class="main-space">
+            <div class="top-label">Create Employee</div>
+            <div class="form-area" style="width: 100%;">
+                <form action="">
+                    <div class="row">
+                        <div class="pair">
+                            <label>Employee Name</label>
+                            <input type="text" placeholder="Employee Name">
+                        </div>
+                        <div class="pair">
+                            <label>Employee ID</label>
+                            <input type="text" placeholder="Employee ID">
+                        </div>
+                        <div class="pair">
+                            <label>Joining Date</label>
+                            <input type="text" placeholder="Joining Date">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="pair">
+                            <label>Role</label>
+                            <input type="text" placeholder="Role">
+                        </div>
+                        <div class="pair">
+                            <label>Status</label>
+                            <input type="text" placeholder="Status">
+                        </div>
+                        <div class="pair">
+                            <label>Experience</label>
+                            <input type="text" placeholder="Exeperience">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <label>Address</label>
+                            <div class="pair" style="gap: 10px;">
+                                <input type="text" placeholder="Address">
+                                <input type="text" placeholder="City">
+                                <div style="display: flex; flex-direction: row;gap: 10px;" >
+                                    <input type="text" placeholder="Country" style="width: 50%">
+                                    <input type="text" placeholder="Postal Code" style="width: 50%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "pair">
+                            <label >Upload Id Proof</label>
+                            <input type="file" placeholder="Employee ID" id="file-upload" class="def-button" >
+                            <label class="custom-file-input" for="file-upload">
+                                <img src="/src/assets/Frame.png" alt="" >
+                                <span style="align-self: center;">Attach Files</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="button-row">
+                        <input type="button" value="Create" class="create-button"> 
+                        <input type="button" value="Cancel" class="cancel-button">
+                    </div>
+                    
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
