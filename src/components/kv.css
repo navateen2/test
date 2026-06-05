@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "nunito";
+    src: url("src/assets/nunito.regular.ttf") format("truetype");
+}
 .container {
   display: flex; /* Enables flexbox layout */
   height: 100vh; /* Optional: Full viewport height */
@@ -37,7 +41,7 @@ form {
 
 }
 
-input {
+.login-input {
     margin-top: 32px;
     width: 460px;
     height: 60px;

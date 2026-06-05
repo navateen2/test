@@ -1,19 +1,11 @@
-
 import "./form.css"
-import FormRow from "./FormRow"
-import SideBar from "./SideBar"
-function FormPage(){
-
-    return (
-   <>
-   <nav className="navbar">
-        <img src="/src/assets/kv logo.png" alt="" />
-    </nav>
-    <div className="main-page">
-        <SideBar />
-        <div className="main-space">
-            <div className="top-label">Create Employee</div>
-            <div className="form-area width-full">
+import FormRow from "./FormRow";
+function FormArea(){
+    return(<>
+                <div className="top-label">
+                <span>Create Employee</span>
+                </div>
+                <div className="form-area width-full">
                 <form action="">
                     <FormRow name1="Employee Name" name2="Employee ID" name3="Joining Date"/>
                     <FormRow name1="Role" name2="Status" name3="Experience"/>
@@ -46,13 +38,9 @@ function FormPage(){
                     
                 </form>
             </div>
-
-        </div>
-    </div>
-   </>     
-
-
-    )
+    
+    </>)
 }
 
-export default FormPage
+
+export default FormArea;

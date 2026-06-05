@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "nunito";
+    src: url("src/assets/nunito.regular.ttf") format("truetype");
+}
+
 .navbar{
     background-color: white;
     position: sticky;
@@ -8,6 +13,7 @@
 
 body{
     background-color:white ;
+    font-family: "nunito";
 }
 
 .sidebutton{
@@ -49,17 +55,18 @@ body{
 
 .main-space{
     background-color: #F3F6FA;
-    
+    padding-top: 32px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 5px;
 }
 .top-label,.form-area{
     border-radius: 8px;
     background-color: white;
     padding-left: 24px;
+    padding-right: 24px;
     padding-bottom: 10px;
     padding-top: 10px;
     margin: 20px;
@@ -72,6 +79,7 @@ body{
     font-size: 24px;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .row{
@@ -165,3 +173,5 @@ input{
     flex-direction: row;
     gap: 10px;
 }
+
+

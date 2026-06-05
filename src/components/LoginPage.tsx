@@ -1,8 +1,8 @@
 import { useState } from "react"
 // import Input from "./Input.tsx"
-import LoginButton from "./LoginButton.tsx"
 import "./kv.css"
 
+import { Link } from "react-router"
 
 
 
@@ -129,13 +129,15 @@ function loginPage() {
                 <div>
                     <img src="/src/assets/kv logo.png" alt="" />
                     <form className="vbox">
-                         <input type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)} />
+                         <input className="login-input" type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)} />
                          <span style={{ color: "red" }}>
                          {(username.includes('@') || username.length==0)?null:<>Email must contain @<br/></>}
                          {(username.length>=8 || username.length==0)?null:<>Email should have more than 8 characters</>}
                          </span>
-                         <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />                     
-                         <LoginButton onClick={()=>{console.log(username+" "+password)}}/>
+                         <input className="login-input" type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />   
+                         <Link to="/employee">
+                         <input type="button" value="Login" className="button login-input" onClick={()=>{console.log(username+" "+password)}} />                  
+                         </Link>
                      </form>
                 </div>
                 
