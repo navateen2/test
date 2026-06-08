@@ -6,10 +6,7 @@ import ChatRow from "./ChatRow";
 function Chat() {
   return (
     <div className="chat-parent">
-      <div className="top-row">
-        <img src={whatsapp} />
-        <p>Help Desk</p>
-      </div>
+      <div className="top-row"> <img src={whatsapp} /> <p>Help Desk</p> </div>
       <div className="bottom-row">
         <div className="chats">
           <ChatRow text="i went to china" sender="me" />
@@ -20,12 +17,8 @@ function Chat() {
             </div>
           </div>
         </div>
-        <div className="sendmessage">
-          <input
-            className="messageinput"
-            placeholder="Type your message here ..."
-          />
-          <img src={frame} />
+        <div className="sendmessage"> <input className="messageinput" placeholder="Type your message here ..." />
+          <img src={frame} className="send-button"/>
         </div>
       </div>
     </div>

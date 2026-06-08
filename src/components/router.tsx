@@ -1,13 +1,24 @@
 import { createBrowserRouter } from "react-router";
 
 import LoginPage from "./LoginPage";
-import Page from "./Page";
+// import Page from "./Page";
 import FormArea from "./FormArea";
 import EmployeeList from "./EmployeeList";
 import Error from "./Error";
 import { Navigate } from "react-router";
 import EmployeeDetails from "./EmployeeDetails";
 
+
+// const EmployeeDetails = React.lazy(() =>
+//   Promise.all([
+//     import("./EmployeeDetails"),
+//     new Promise(resolve => setTimeout(resolve, 1000))
+//   ]).then(([module]) => module)
+// );
+
+
+import React from "react";
+const Page = React.lazy(() => import("./Page"))
 
 
 function PrivateRoute(props:{children:React.ReactNode}){

@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router"
 import "./EmployeeList.css"
+import Status from "./Status"
+import {employees} from "./Page"
+import DeleteConfirmation from "./DeleteConfirmation"
+import { useState } from "react"
+
 
 function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
-
+    const navigate=useNavigate()
     if(props.type==="heading"){
     return (<>
     <div className="employee-row  blue-row">
@@ -22,23 +27,31 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
 
         if(props.index % 2 ==0){
             return(
-                <div className="employee-row grey-row">
-                {
-                    props.values.map((a:string)=>{return <div className="row-item">{a}</div>})
-                }
-                <div className="icon-pair row-item">
-                    <img src="/src/assets/trash.svg" alt="" />
-                    <img src="/src/assets/pencil.svg" alt="" />
+                <div className="employee-row grey-row" onClick={()=>{navigate("/employee/details/"+props.index)}}>
+                
+                    <div className="row-item">{props.values[0]}</div>
+                    <div className="row-item">{props.values[1]}</div>
+                    <div className="row-item">{props.values[2]}</div>
+                    <div className="row-item">{props.values[3]}</div>
+                    <div className="row-item"><Status type={props.values[4]} /></div>
+                    <div className="row-item">{props.values[5]}</div>
+                
+                    <div className="icon-pair row-item">
+                        <img src="/src/assets/trash.svg" alt="" />
+                        <img src="/src/assets/pencil.svg" alt="" />
+                    </div>
                 </div>
-            </div>
             )
 
         }else{
             return(
-            <div className="employee-row white-row">
-                {
-                    props.values.map((a:string)=>{return <div className="row-item">{a}</div>})
-                }
+            <div className="employee-row white-row" onClick={()=>{navigate("/employee/details/"+props.index)}}>
+                    <div className="row-item">{props.values[0]}</div>
+                    <div className="row-item">{props.values[1]}</div>
+                    <div className="row-item">{props.values[2]}</div>
+                    <div className="row-item">{props.values[3]}</div>
+                    <div className="row-item"><Status type={props.values[4]} /></div>
+                    <div className="row-item">{props.values[5]}</div>
                 <div className="icon-pair row-item">
                     <img src="/src/assets/trash.svg" alt="" />
                     <img src="/src/assets/pencil.svg" alt="" />
@@ -47,23 +60,13 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
     }
 }
 
-const employees = [
-  ["Vishal M",      "Lazada", "12.04.2021", "Full Stack",  "Probation", "5 Years"],
-  ["Susan Kurian",  "XYZ",    "12.04.2021", "UI Engineer", "Probation", "7 Years"],
-  ["Yugesh",        "XYZ",    "12.04.2021", "Devops",      "Active",    "6 Years"],
-  ["Midhun",        "Lazada", "12.04.2021", "Full Stack",  "Active",    "5 Years"],
-  ["Abhijith",      "XYZ",    "12.04.2021", "UI Engineer", "Inactive",  "7 Years"],
-  ["Aiswarya",      "XYZ",    "12.04.2021", "Devops",      "Active",    "6 Years"],
-  ["Fayis",         "Lazada", "12.04.2021", "Full Stack",  "Active",    "5 Years"],
-  ["Vennila",       "XYZ",    "12.04.2021", "UI Engineer", "Active",    "7 Years"],
-  ["Stephen John",  "XYZ",    "12.04.2021", "Devops",      "Active",    "6 Years"],
-  ["Monica",        "Lazada", "12.04.2021", "Full Stack",  "Active",    "5 Years"],
-  ["Rachel",        "XYZ",    "12.04.2021", "UI Engineer", "Active",    "7 Years"],
-];
+
 
 
 function EmployeeList(){
     const navigate = useNavigate();
+    let [dialog,setDialog]= useState(false)
+
 
     return(<>
     <div className="top-label justify-space-between">
@@ -90,9 +93,10 @@ function EmployeeList(){
     <EmployeeRow type="heading" values={[]} index={0}/>
     {employees.map((a,b)=>{return (<EmployeeRow type="record" index={b} values={a} />)})}
     </div>
+    {dialog && <DeleteConfirmation index={0} />}
     </>
     )
         
 }
 
-export default EmployeeList
+export default EmployeeList;
