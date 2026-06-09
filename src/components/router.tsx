@@ -18,6 +18,7 @@ import EmployeeDetails from "./EmployeeDetails";
 
 
 import React from "react";
+import EditEmployeeArea from "./EditEmployee";
 const Page = React.lazy(() => import("./Page"))
 
 
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
         children: [
             {index:true,element:<EmployeeList />},
             {path: "create", element: <FormArea /> },
-            {path: "details/:id" , element: <EmployeeDetails/>}
+            {path: "details/:id" , element: <EmployeeDetails/>},
+            {path: "edit/:id" , element: <EditEmployeeArea/>}
         ]
     },
     {

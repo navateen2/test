@@ -4,6 +4,7 @@ import Status from "./Status"
 import {employees} from "./Page"
 import DeleteConfirmation from "./DeleteConfirmation"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 
 function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
@@ -64,6 +65,7 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
 
 
 function EmployeeList(){
+    // const employees=useSelector((state:any)=>state.employee.employees)
     const navigate = useNavigate();
     let [dialog,setDialog]= useState(false)
 
