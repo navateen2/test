@@ -1,6 +1,12 @@
+import { useDeleteEmployeeMutation } from "../employee/api";
 
 
-function DeleteConfirmation({index}:{index:number}){
+function DeleteConfirmation({index,setDialog}:{index:number,setDialog:any}){
+    const [deleteEmployee, { isLoading, error }] = useDeleteEmployeeMutation();
+    function confirm(){
+        deleteEmployee(index)
+    }
+
     return (
         <div className="overlay">
             <div className="dialog-box">
@@ -9,10 +15,10 @@ function DeleteConfirmation({index}:{index:number}){
                 <span className="dialog-bottom-text">Do you really want to delete employee?</span>
                 </div>
                 <div className="dialog-button-row">
-                    <button className="dialog-button-cancel">
+                    <button className="dialog-button-cancel" onClick={()=>{setDialog(-1)}}> 
                         Cancel
                     </button>
-                    <button className="dialog-button-confirm">
+                    <button className="dialog-button-confirm" onClick={()=>{confirm();setDialog(-1)}}>
                         Confirm
                     </button>
 

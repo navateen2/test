@@ -4,6 +4,7 @@ import { useParams } from "react-router"
 import { useNavigate } from "react-router"
 import store from "../store"
 import { useSelector } from "react-redux"
+import { useGetEmployeeByIdQuery } from "../employee/api"
 
 
 export default function EmployeeDetails(){
@@ -11,7 +12,8 @@ export default function EmployeeDetails(){
     // const details=store.s
     const {id}=useParams()
     const ind=Number(id)
-    const employees=useSelector((state:any)=>(state.employee.employees))
+    const {data,isLoading,error} = useGetEmployeeByIdQuery(ind)
+    // const employees=useSelector((state:any)=>(state.employee.employees))
     return (<>
     <div className="top-label justify-space-between">
                 <span>Employee Details</span>
@@ -27,11 +29,11 @@ export default function EmployeeDetails(){
     </div>
     <div className="details-area">
         <div className="detail-row">
-            <div className="detail-cell"><span className="detail-heading">Employee Name</span>{employees[ind]["name"]}<span></span></div>
-            <div className="detail-cell"><span className="detail-heading">Joining Date</span><span>{employees[ind]["dateofjoining"]}</span></div>
-            <div className="detail-cell"><span className="detail-heading">Experience</span><span>{employees[ind]["experience"]}</span></div>
-            <div className="detail-cell"><span className="detail-heading">Role</span><span>{employees[ind]["role"]}</span></div>
-            <div className="detail-cell"><span className="detail-heading">Status</span><span>{employees[ind]["status"]}</span></div>
+            <div className="detail-cell"><span className="detail-heading">Employee Name</span>{data?.["name"]}<span></span></div>
+            <div className="detail-cell"><span className="detail-heading">Joining Date</span><span>{data?.["created_at"]}</span></div>
+            <div className="detail-cell"><span className="detail-heading">Experience</span><span>{data?.["name"]}</span></div>
+            <div className="detail-cell"><span className="detail-heading">Role</span><span>{data?.["role"]}</span></div>
+            <div className="detail-cell"><span className="detail-heading">Status</span><span>{data?.["name"]}</span></div>
 
 
         </div>

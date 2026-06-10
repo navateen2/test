@@ -1,4 +1,4 @@
-
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 export const EMPLOYEE_ACTION_TYPES = {
     ADD:"employee/ADD",
@@ -59,21 +59,17 @@ let initialState={
 
 
 
-export const reducer = (
-    state:EmployeeState = initialState,
-    action: EmployeeAction
-):EmployeeState => {
-    switch (action.type) {
-        case EMPLOYEE_ACTION_TYPES.ADD: {
-            // const record = employeeFromFormToRecord(
-            //     action.payload,
-            //     nextEmployeeId(state.employees)
-            // );
-            const record = action.payload
-            return {...state, employees: [...state.employees, record]};
+	
+export const employeeSlice = createSlice({
+  name: 'employee',
+  initialState,
+  reducers: {
+    addEmployee: (state, action: PayloadAction<Employee>) => {
+      state.employees.push(action.payload);
+    },
+  },
+});
+ 
+export const { addEmployee } = employeeSlice.actions
+export const reducer = employeeSlice.reducer
 
-        }
-        default:
-            return state;
-    }
-};

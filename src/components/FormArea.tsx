@@ -1,24 +1,75 @@
+import { useCreateEmployeeMutation} from "../employee/api";
 import "./form.css"
-import FormRow from "./FormRow";
+
+
+function FormItem({name,tag}:{name:string,tag:string}){
+    return (
+        <>
+        <div className="pair">
+            <label>{name}</label>
+            <input type="text" placeholder={name} name={tag}/>
+        </div>
+        </>
+    )
+}
+
+
+
+
 function FormArea(){
+    const [createEmployee,result] = useCreateEmployeeMutation()
+
+    function handleSubmit(e: any) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const name = formData.get("name")?.toString() || '';
+    const role = formData.get("role")?.toString() || '';
+    const country=formData.get("country")?.toString() || ''
+    const city=formData.get("city")?.toString() || ''
+    const postal_code=formData.get("postal_code")?.toString() || ''
+    const response:any={
+            "name": name,
+            "email": name.split(" ",1)+"@keyvalue.com",
+            "age": 18,
+            "address": {
+                "country": country,
+                "city": city,
+                "postal_code": postal_code
+            },
+            "password": "string"
+            }
+    console.log(response)
+    createEmployee(response)
+    }
     return(<>
                 <div className="top-label">
                 <span>Create Employee</span>
                 </div>
                 <div className="form-area width-full">
-                <form action="">
-                    <FormRow name1="Employee Name" name2="Employee ID" name3="Joining Date"/>
-                    <FormRow name1="Role" name2="Status" name3="Experience"/>
-                    
+                <form onSubmit={handleSubmit}>
+                    <div className="row">
+                        <FormItem name={"Employee Name"} tag="name" />
+                        <FormItem name={"Employee ID"} tag= "id"/> 
+                        <FormItem name={"Joining Date"} tag = "created_at"/>
+                    </div>
+                    <div className="row">
+                        <FormItem name={"Role"} tag="role"/>
+                        <FormItem name={"Status"} tag = "status"/>
+                        <FormItem name={"Experience"} tag = "experience" />
+                        
+                    </div>
+
                     <div className="row">
                         <div>
                             <label>Address</label>
                             <div className="pair gap">
                                 <input type="text" placeholder="Address" />
-                                <input type="text" placeholder="City" />
+                                <input type="text" placeholder="City" name="city" />
                                 <div className="country-postalcode" >
-                                    <input type="text" placeholder="Country" className="width-half"/>
-                                    <input type="text" placeholder="Postal Code" className="width-half" />
+                                    <input type="text" placeholder="Country" name="country" className="width-half"/>
+                                    <input type="text" placeholder="Postal Code" name="postal_code" className="width-half" />
                                 </div>
                             </div>
                         </div>
@@ -32,7 +83,7 @@ function FormArea(){
                         </div>
                     </div>
                     <div className="button-row">
-                        <input type="button" value="Create" className="create-button" /> 
+                        <input type="submit" value="Create" className="create-button"  /> 
                         <input type="button" value="Cancel" className="cancel-button" />
                     </div>
                     

@@ -5,9 +5,9 @@ import {employees} from "./Page"
 import DeleteConfirmation from "./DeleteConfirmation"
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { useGetEmployeesQuery } from "../employee/api"
 
-
-function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
+function EmployeeRow(props:{type:string,values:any,index:number,deleteDialog:any}){
     const navigate=useNavigate()
     if(props.type==="heading"){
     return (<>
@@ -28,17 +28,17 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
 
         if(props.index % 2 ==0){
             return(
-                <div className="employee-row grey-row" onClick={()=>{navigate("/employee/details/"+props.index)}}>
+                <div className="employee-row grey-row" onClick={()=>{navigate("/employee/details/"+props.values["id"])}}>
                 
-                    <div className="row-item">{props.values[0]}</div>
-                    <div className="row-item">{props.values[1]}</div>
-                    <div className="row-item">{props.values[2]}</div>
-                    <div className="row-item">{props.values[3]}</div>
-                    <div className="row-item"><Status type={props.values[4]} /></div>
-                    <div className="row-item">{props.values[5]}</div>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item">{props.values["id"]}</div>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item"><Status type={props.values["name"]} /></div>
+                    <div className="row-item">{props.values["name"]}</div>
                 
                     <div className="icon-pair row-item">
-                        <img src="/src/assets/trash.svg" alt="" />
+                        <img src="/src/assets/trash.svg" alt="" onClick={(e)=>{e.stopPropagation();props.deleteDialog(props.values["id"])}}/>
                         <img src="/src/assets/pencil.svg" alt="" />
                     </div>
                 </div>
@@ -46,15 +46,15 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
 
         }else{
             return(
-            <div className="employee-row white-row" onClick={()=>{navigate("/employee/details/"+props.index)}}>
-                    <div className="row-item">{props.values[0]}</div>
-                    <div className="row-item">{props.values[1]}</div>
-                    <div className="row-item">{props.values[2]}</div>
-                    <div className="row-item">{props.values[3]}</div>
-                    <div className="row-item"><Status type={props.values[4]} /></div>
-                    <div className="row-item">{props.values[5]}</div>
+            <div className="employee-row white-row" onClick={()=>{navigate("/employee/details/"+props.values["id"])}}>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item">{props.values["id"]}</div>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item">{props.values["name"]}</div>
+                    <div className="row-item"><Status type={props.values["name"]} /></div>
+                    <div className="row-item">{props.values["name"]}</div>
                 <div className="icon-pair row-item">
-                    <img src="/src/assets/trash.svg" alt="" />
+                    <img src="/src/assets/trash.svg" alt="" onClick={(e)=>{e.stopPropagation();props.deleteDialog(props.values["id"])}}/>
                     <img src="/src/assets/pencil.svg" alt="" />
                 </div>
             </div>)}
@@ -66,8 +66,11 @@ function EmployeeRow(props:{type:string,values:Array<string>,index:number}){
 
 function EmployeeList(){
     // const employees=useSelector((state:any)=>state.employee.employees)
+    const {data,isLoading,error}=useGetEmployeesQuery()
+    const employees=data
+    console.log(data)
     const navigate = useNavigate();
-    let [dialog,setDialog]= useState(false)
+    let [dialog,setDialog]= useState(-1)
 
 
     return(<>
@@ -92,10 +95,10 @@ function EmployeeList(){
     </div>
     
     <div className="list">
-    <EmployeeRow type="heading" values={[]} index={0}/>
-    {employees.map((a,b)=>{return (<EmployeeRow type="record" index={b} values={a} />)})}
+    <EmployeeRow type="heading" values={[]} index={0} deleteDialog={""}/>
+    {!isLoading && (employees.map((a:any,b:number)=>{return (<EmployeeRow type="record" index={b} key={b} values={a} deleteDialog={setDialog}/>)}))}
     </div>
-    {dialog && <DeleteConfirmation index={0} />}
+    {(dialog>-1) && <DeleteConfirmation index={dialog} setDialog={setDialog}/>}
     </>
     )
         

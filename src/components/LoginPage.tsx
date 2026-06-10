@@ -2,8 +2,9 @@ import { useState } from "react"
 // import Input from "./Input.tsx"
 import "./kv.css"
 
-import { Link } from "react-router"
-
+import { Link, useNavigate } from "react-router"
+import { useLoginMutation } from "../api-service/auth/login.api";
+import { Navigate } from "react-router";
 
 
 
@@ -119,8 +120,25 @@ import { Link } from "react-router"
 //   "Multi Tool Kit"
 // ];
 function loginPage() {
-    let [username,setUsername]=useState("")
-    let [password,setPassword]=useState("")
+    const navigate = useNavigate()
+	const [login] = useLoginMutation();
+    const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+    
+const onLogin = async () => {
+    const params =new  URLSearchParams({
+        username: username,
+        password: password
+    });
+
+    const response = await login(params);
+    localStorage.setItem("token", response.data.access_token);
+
+    navigate("/employee");
+
+    };
+ 
+
     return<>
     <div className="container">
         <div className="left"><img src="/src/assets/Mask group.png" /></div>
@@ -135,9 +153,9 @@ function loginPage() {
                          {(username.length>=8 || username.length==0)?null:<>Email should have more than 8 characters</>}
                          </span>
                          <input className="login-input" type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />   
-                         <Link to="/employee">
-                         <input type="button" value="Login" className="button login-input" onClick={()=>{console.log(username+" "+password)}} />                  
-                         </Link>
+                         
+                         <input type="button" value="Login" className="button login-input" onClick={onLogin} />                  
+                         
                      </form>
                 </div>
                 
