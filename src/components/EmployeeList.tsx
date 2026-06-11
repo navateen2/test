@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router"
 import "./EmployeeList.css"
 import Status from "./Status"
-import {employees} from "./Page"
-import DeleteConfirmation from "./DeleteConfirmation"
+import DeleteConfirmation from "@components/DeleteConfirmation"
 import { useState } from "react"
-import { useSelector } from "react-redux"
 import { useGetEmployeesQuery } from "../employee/api"
 
 function EmployeeRow(props:{type:string,values:any,index:number,deleteDialog:any}){
@@ -33,8 +31,8 @@ function EmployeeRow(props:{type:string,values:any,index:number,deleteDialog:any
                     <div className="row-item">{props.values["name"]}</div>
                     <div className="row-item">{props.values["id"]}</div>
                     <div className="row-item">{props.values["name"]}</div>
-                    <div className="row-item">{props.values["name"]}</div>
-                    <div className="row-item"><Status type={props.values["name"]} /></div>
+                    <div className="row-item">{props.values["role"]}</div>
+                    <div className="row-item"><Status type={props.values["status"]} /></div>
                     <div className="row-item">{props.values["name"]}</div>
                 
                     <div className="icon-pair row-item">
@@ -50,8 +48,8 @@ function EmployeeRow(props:{type:string,values:any,index:number,deleteDialog:any
                     <div className="row-item">{props.values["name"]}</div>
                     <div className="row-item">{props.values["id"]}</div>
                     <div className="row-item">{props.values["name"]}</div>
-                    <div className="row-item">{props.values["name"]}</div>
-                    <div className="row-item"><Status type={props.values["name"]} /></div>
+                    <div className="row-item">{props.values["role"]}</div>
+                    <div className="row-item"><Status type={props.values["status"]} /></div>
                     <div className="row-item">{props.values["name"]}</div>
                 <div className="icon-pair row-item">
                     <img src="/src/assets/trash.svg" alt="" onClick={(e)=>{e.stopPropagation();props.deleteDialog(props.values["id"])}}/>

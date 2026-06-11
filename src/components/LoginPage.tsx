@@ -147,14 +147,14 @@ const onLogin = async () => {
                 <div>
                     <img src="/src/assets/kv logo.png" alt="" />
                     <form className="vbox">
-                         <input className="login-input" type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)} />
+                         <input className="login-input" type="text" placeholder="Username" onChange={(e)=>setUsername(e.target.value)} data-testid="username-field" />
                          <span style={{ color: "red" }}>
                          {(username.includes('@') || username.length==0)?null:<>Email must contain @<br/></>}
                          {(username.length>=8 || username.length==0)?null:<>Email should have more than 8 characters</>}
                          </span>
-                         <input className="login-input" type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />   
+                         <input className="login-input" type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} data-testid="password-field"/>   
                          
-                         <input type="button" value="Login" className="button login-input" onClick={onLogin} />                  
+                         <input type="button" value="Login" className="button login-input" onClick={onLogin} data-testid="submit-button"/>                  
                          
                      </form>
                 </div>

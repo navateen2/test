@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`login > renders without crashing 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="left"
+    >
+      <img
+        src="/src/assets/Mask group.png"
+      />
+    </div>
+    <div
+      class="right"
+    >
+      <div
+        class="vbox"
+      >
+        <div>
+          <img
+            alt=""
+            src="/src/assets/kv logo.png"
+          />
+          <form
+            class="vbox"
+          >
+            <input
+              class="login-input"
+              data-testid="username-field"
+              placeholder="Username"
+              type="text"
+            />
+            <span
+              style="color: red;"
+            />
+            <input
+              class="login-input"
+              data-testid="password-field"
+              placeholder="Password"
+              type="password"
+            />
+            <input
+              class="button login-input"
+              data-testid="submit-button"
+              type="button"
+              value="Login"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
