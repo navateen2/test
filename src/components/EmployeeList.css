@@ -4,7 +4,7 @@
     padding-left: 24px;
     padding-right: 24px;
     border-radius: 8px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     display: flex;
     flex-direction: row;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
@@ -57,9 +57,10 @@ select{
     background: #EAF9FF;
     border-width: 0cap;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 510;
     justify-content: center;
     align-content: center;
+    padding-left: 10px;
     
 }
 
@@ -208,3 +209,4 @@ select{
     color: white;
     border-width: 0px;
 }
+

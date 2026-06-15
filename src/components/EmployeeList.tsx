@@ -77,7 +77,7 @@ function EmployeeList(){
                 <div className="header-items-right">
                         <div className="filter-options">
                             <span className="filter-text">Filter By</span>
-                            <select>
+                            <select className="filter-button">
                                 <option selected><b>Status</b></option>    
                                 
                             </select>

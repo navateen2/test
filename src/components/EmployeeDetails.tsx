@@ -5,6 +5,7 @@ import { useNavigate } from "react-router"
 import store from "../store"
 import { useSelector } from "react-redux"
 import { useGetEmployeeByIdQuery } from "../employee/api"
+import Status from "./Status"
 
 
 export default function EmployeeDetails(){
@@ -33,7 +34,7 @@ export default function EmployeeDetails(){
             <div className="detail-cell"><span className="detail-heading">Joining Date</span><span>{data?.["created_at"]}</span></div>
             <div className="detail-cell"><span className="detail-heading">Experience</span><span>{data?.["name"]}</span></div>
             <div className="detail-cell"><span className="detail-heading">Role</span><span>{data?.["role"]}</span></div>
-            <div className="detail-cell"><span className="detail-heading">Status</span><span>{data?.["name"]}</span></div>
+            <div className="detail-cell"><span className="detail-heading">Status</span><span>{<Status type={data?.["status"]} />}</span></div>
 
 
         </div>

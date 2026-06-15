@@ -4,7 +4,6 @@ exports[`Input component > renders without crashing 1`] = `
 <div>
   <input
     id="test-input"
-    label="Test Input"
     placeholder="test"
   />
 </div>

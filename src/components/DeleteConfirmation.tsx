@@ -2,7 +2,7 @@ import { useDeleteEmployeeMutation } from "../employee/api";
 
 
 function DeleteConfirmation({index,setDialog}:{index:number,setDialog:any}){
-    const [deleteEmployee, { isLoading, error }] = useDeleteEmployeeMutation();
+    const [deleteEmployee,] = useDeleteEmployeeMutation();
     function confirm(){
         deleteEmployee(index)
     }

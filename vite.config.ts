@@ -9,7 +9,8 @@ export default defineConfig({
   '@components': resolve(__dirname, './src/components'),
   '@utils': resolve(__dirname, './src/utils'),
   '@hooks': resolve(__dirname, './src/hooks'),
-  '@feautures': resolve(__dirname, './src/feautures'),
+  '@features': resolve(__dirname, './src/feautures'),
+  '@auth': resolve(__dirname, './src/api-service/auth'),
   
 
 }}

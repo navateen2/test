@@ -66,8 +66,8 @@ function EditEmployeeArea(){
                 </div>
                 <div className="form-area width-full">
                 <form onSubmit={handleSubmit}>
-                    <FormRow name1="Employee Name" name2="Employee ID" name3="Joining Date" value1={data?.["name"]} value2={data?.["name"]} value3={data?.["created_at"]} tag1="name"  tag2="id" tag3="created_at"/>
-                    <FormRow name1="Role" name2="Status" name3="Experience" value1={data?.["role"]} value2={data?.["name"]} value3={data?.["name"]} tag1="role" tag2="status" tag3="experience"/>
+                    <FormRow name1="Employee Name" name2="Employee ID" name3="Joining Date" value1={data?.["name"]} value2={data?.["id"]} value3={data?.["created_at"]} tag1="name"  tag2="id" tag3="created_at"/>
+                    <FormRow name1="Role" name2="Status" name3="Experience" value1={data?.["role"]} value2={data?.["status"]} value3={data?.["name"]} tag1="role" tag2="status" tag3="experience"/>
                     
                     <div className="row">
                         <div>
